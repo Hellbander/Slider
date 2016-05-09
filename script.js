@@ -11,6 +11,7 @@ var first_Li = document.getElementsByClassName('li-image')[0];
 var last_Li = document.getElementsByClassName('li-image')[li_count - 1];
 var newLi;
 var i = 1;
+var move_image = 0;
 
 function changeList() {
 	'use strict';
@@ -24,7 +25,6 @@ function changeList() {
 
 function moveSlider(direction) {
 	'use strict';
-   var move_image = 0;
    if (direction === "left") {
       move_image = sld * 2;
       newLi = first_Li.cloneNode(true);
@@ -35,8 +35,10 @@ function moveSlider(direction) {
          i = i + 1;
       }
    } else if (direction === "right") {
-      move_image = 0;
-      
+      newLi = last_Li.cloneNode(true);
+		newLi.style.marginLeft = sld * 2 + "px";
+	   slider.insertBefore(newLi, first_Li);
+		first_Li.style.marginLeft = 0;  
    }
 
    switch (direction) {
@@ -49,15 +51,17 @@ function moveSlider(direction) {
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
       break;
    case "right":
-      first_Li.style.marginLeft = move_image + "px"; 
-		newLi = last_Li.cloneNode(true);
-		newLi.style.marginLeft = sld + "px";
-		slider.insertBefore(newLi, first_Li);
-     // first_Li = document.getElementsByClassName('li-image')[0];
-     // last_Li.remove();
-    //  last_Li = document.getElementsByClassName('li-image')[li_count - 1];
+		last_Li.remove();
+		first_Li = document.getElementsByClassName('li-image')[0];
+      last_Li = document.getElementsByClassName('li-image')[li_count - 1];
+      rightDelete();
       break;
    }
+}
+
+function rightDelete() {
+	 move_image = img_width * (-1);
+	 first_Li.style.marginLeft = move_image + "px"; 
 }
 
 changeList();
