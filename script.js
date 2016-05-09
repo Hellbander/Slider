@@ -36,7 +36,6 @@ function moveSlider(direction) {
       }
    } else if (direction === "right") {
       move_image = 0;
-      newLi = last_Li.cloneNode(true);
       
    }
 
@@ -50,12 +49,13 @@ function moveSlider(direction) {
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
       break;
    case "right":
-      first_Li.style.marginLeft = move_image + "px";  
+      first_Li.style.marginLeft = move_image + "px"; 
+		newLi = last_Li.cloneNode(true);
 		newLi.style.marginLeft = sld + "px";
 		slider.insertBefore(newLi, first_Li);
-      first_Li = document.getElementsByClassName('li-image')[0];
-      last_Li.remove();
-      last_Li = document.getElementsByClassName('li-image')[li_count - 1];
+     // first_Li = document.getElementsByClassName('li-image')[0];
+     // last_Li.remove();
+    //  last_Li = document.getElementsByClassName('li-image')[li_count - 1];
       break;
    }
 }
