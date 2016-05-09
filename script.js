@@ -37,9 +37,9 @@ function moveSlider(direction) {
    } else if (direction === "right") {
       move_image = sld * 2;
       newLi = last_Li.cloneNode(true);
-      newLi.style.marginLeft = move_image + "px";
-      first_Li.style.marginLeft = 0;
       slider.insertBefore(newLi, first_Li);
+		newLi.style.marginLeft = move_image + "px";
+      first_Li.style.marginLeft = 0;
       first_Li = document.getElementsByClassName('li-image')[0];
       move_image = img_width * (-1);
    }
@@ -56,6 +56,7 @@ function moveSlider(direction) {
       first_Li.style.marginLeft = move_image + "px";
       last_Li.remove();
       last_Li = document.getElementsByClassName('li-image')[li_count - 1];
+	   first_Li.style.marginLeft = move_image + "px";
       break;
    }
 }
