@@ -1,0 +1,126 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*------------------------------------------------------------------------------------------------------*/
+
+#main-container{
+   width: 960px;
+   background-color: grey;
+   min-height: 600px;
+   border: 5px ridge #f1f1f1;
+   margin: auto;
+   margin-top: 50px;
+}
+body{
+   background-color: lightblue;
+
+}
+#main-header{
+   font-size: 170px;
+   font-family: fantasy;
+   text-align: center;
+   text-shadow: 3px 3px 10px #FFFFFF;
+}
+#main-gallery{
+  margin-top: 21%;
+  float: left;
+  height: 180px;
+  width: 100%;
+}
+#inside-gallery{
+    margin: 0 auto;
+    width: 816px;
+    overflow: hidden;
+}
+ul{
+  width: 100%;
+  position: relative;
+  margin-left: 0;
+	display: block;
+  overflow: hidden;
+  list-style: none;
+  white-space: nowrap;
+}
+ul li{
+display: inline;
+margin-left: 0;
+font-size: 0;
+
+}
+ul li:first-child{
+transition: 1s linear margin-left;
+}
+ul .image{
+  width: 260px;
+  height: 175px;
+  padding: 5px;
+	border: 1px solid #F1F1F1;
+}
+#left{
+  margin-top: 7%;
+  width: 40px;
+  height: 60px;
+  float: left;
+}
+#right{
+  margin-top: 7%;
+  width: 40px;
+  height: 60px;
+  float: right;
+}
+a:hover{
+  color: black;
+  uderline: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
