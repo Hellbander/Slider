@@ -47,13 +47,12 @@ function moveSlider(direction) {
       move_image = sld;
       first_Li = document.getElementsByClassName('li-image')[0];
       first_Li.style.marginLeft = move_image + "px";
+		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
       break;
    case "right":
-      first_Li.style.marginLeft = move_image + "px";
-			  
-		slider.insertBefore(newLi, first_Li);
-		
+      first_Li.style.marginLeft = move_image + "px";  
 		newLi.style.marginLeft = sld + "px";
+		slider.insertBefore(newLi, first_Li);
       first_Li = document.getElementsByClassName('li-image')[0];
       last_Li.remove();
       last_Li = document.getElementsByClassName('li-image')[li_count - 1];
