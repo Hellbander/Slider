@@ -22,6 +22,13 @@ function changeList() {
 	 
 }
 
+function rightInsert() {
+	'use strict';
+   newLi.style.marginLeft = sld + "px";
+   //slider.insertBefore(newLi, first_Li);
+	first_Li = document.getElementsByClassName('li-image')[0];
+	last_Li = document.getElementsByClassName('li-image')[li_count - 1];
+}
 
 function moveSlider(direction) {
 	'use strict';
@@ -36,7 +43,7 @@ function moveSlider(direction) {
       }
    } else if (direction === "right") {
       move_image = 0;
-		first_Li.style.marginLeft = move_image + "px"; 
+		first_Li.style.marginLeft = move_image + "px";
 	   
    }
 
@@ -50,18 +57,10 @@ function moveSlider(direction) {
       break;
    case "right":
 		newLi = last_Li.cloneNode(true);
-		newLi.style.marginLeft = sld + "px";
-		slider.insertBefore(newLi, first_Li);
-		first_Li.style.marginLeft = 0;  
-		first_Li = document.getElementsByClassName('li-image')[0];
-      rightDelete();
+		last_Li.remove();
+      rightInsert();
       break;
    }
-}
-
-function rightDelete() {
-	 last_Li.remove();
-    last_Li = document.getElementsByClassName('li-image')[li_count - 1];
 }
 
 changeList();
