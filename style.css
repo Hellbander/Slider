@@ -88,7 +88,7 @@ font-size: 0;
 
 }
 ul li:first-child{
-transition: 1s linear margin-left;
+transition: 2s linear margin-left;
 }
 ul .image{
   width: 260px;

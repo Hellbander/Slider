@@ -36,14 +36,14 @@ function moveSlider(direction) {
       }
    } else if (direction === "right") {
       newLi = last_Li.cloneNode(true);
-		newLi.style.marginLeft = sld * 2 + "px";
 	   slider.insertBefore(newLi, first_Li);
+		newLi.style.marginLeft = sld * 2 + "px";
 		first_Li.style.marginLeft = 0;  
    }
 
    switch (direction) {
    case "left":
-      first_Li.style.marginLeft = move_image + "px";
+      //first_Li.style.marginLeft = move_image + "px";
       first_Li.remove();
       move_image = sld;
       first_Li = document.getElementsByClassName('li-image')[0];
@@ -51,17 +51,18 @@ function moveSlider(direction) {
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
       break;
    case "right":
-		last_Li.remove();
+		move_image = img_width * (-1);
 		first_Li = document.getElementsByClassName('li-image')[0];
-      last_Li = document.getElementsByClassName('li-image')[li_count - 1];
+	   first_Li.style.marginLeft = move_image + "px"; 
       rightDelete();
       break;
    }
 }
 
 function rightDelete() {
-	 move_image = img_width * (-1);
-	 first_Li.style.marginLeft = move_image + "px"; 
+	 last_Li.remove();
+	 first_Li = document.getElementsByClassName('li-image')[0];
+    last_Li = document.getElementsByClassName('li-image')[li_count - 1];
 }
 
 changeList();
