@@ -72,7 +72,7 @@ function getQueryVariable(variable) {
 /*--------------main function--------------*/
 function moveSlider(direction) {
 	'use strict';
-	if (a === 1) {
+	if (a === 0) {
 	   clearInterval(int1); 
 		clearInterval(int2); 
 	}
