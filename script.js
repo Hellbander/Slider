@@ -25,7 +25,7 @@ function changeList() {
 function rightInsert() {
 	'use strict';
    newLi.style.marginLeft = sld + "px";
-   //slider.insertBefore(newLi, first_Li);
+   slider.insertBefore(newLi, first_Li);
 	first_Li = document.getElementsByClassName('li-image')[0];
 	last_Li = document.getElementsByClassName('li-image')[li_count - 1];
 }
@@ -52,7 +52,7 @@ function moveSlider(direction) {
       first_Li.remove();
       move_image = sld;
       first_Li = document.getElementsByClassName('li-image')[0];
-      first_Li.style.marginLeft = move_image + "px";
+		first_Li.style.marginLeft = move_image + "px";
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
       break;
    case "right":
