@@ -38,23 +38,26 @@ function rightInsert() {
 /*--------------------moving image------------------*/
 function moveImage() {
 	'use strict';
-   var left;
+   var left_move;
 	/*--check--*/
 	if (dir === "left")
-		left = 0;
+		left_move = 0;
 	else if (dir === "right")
-		left = sld * 2;
+		left_move = sld * 2;
 	/*--making transition--*/
    function frame() {
 		if (dir === "left")
-         left = left - 1;  
+         left_move = left_move - 1;  
 		else if (dir === "right")
-			left = left + 1;
-      first_Li.style.marginLeft = left + 'px'; 
-      if (left === sld)  {
+			left_move = left_move + 1;
+      first_Li.style.marginLeft = left_move + 'px'; 
+      if (left_move === sld)  {
          clearInterval(int);
-		   if (a === 0) 
+		   if (a === 0){ 
 		      setTimeout(function () {instantPlay()}, 1200);
+			}
+			left.addEventListener("click", eventLlistLeft);
+         right.addEventListener("click", eventLlistRight);
 		}
    }
    int = setInterval(frame, 3);
@@ -72,9 +75,8 @@ function getQueryVariable(variable) {
 /*--------------main function--------------*/
 function moveSlider(direction) {
 	'use strict';
-	if (a === 0) {
-	     
-	}
+	left.removeEventListener("click", eventLlistLeft);
+	right.removeEventListener("click", eventLlistRight);
    if (direction === "left") {
       move_image = sld * 2;
       newLi = first_Li.cloneNode(true);
@@ -101,13 +103,11 @@ function moveSlider(direction) {
 		dir = "left";
 		moveImage();
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
-		left.addEventListener("click", eventLlistLeft);
       break;
    case "right":
 		newLi = last_Li.cloneNode(true);
 		last_Li.remove();
       rightInsert();
-		right.addEventListener("click", eventLlistRight);
       break;
    }
 }
