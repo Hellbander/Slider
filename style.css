@@ -87,9 +87,6 @@ margin-left: 0;
 font-size: 0;
 
 }
-ul li:first-child{
-/*transition: 1s linear margin-left;*/
-}
 ul .image{
   width: 260px;
   height: 175px;

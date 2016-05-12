@@ -87,19 +87,14 @@ function moveSlider(direction) {
          i = i + 1;
       }
    } else if (direction === "right") {
-      //move_image = 0;
 		dir = "right";
 		moveImage();
-		//first_Li.style.marginLeft = move_image + "px";
-	   
    }
 
    switch (direction) {
    case "left":
       first_Li.remove();
-      //move_image = sld;
       first_Li = document.getElementsByClassName('li-image')[0];
-		//first_Li.style.marginLeft = move_image + "px";
 		dir = "left";
 		moveImage();
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
