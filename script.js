@@ -15,7 +15,7 @@ var move_image = 0;
 var dir;
 var int;
 var int1;
-var int2;
+
 
 /*---------------auto function form imagesfom the begining---------------*/
 function changeList() {
@@ -40,7 +40,7 @@ function moveImage() {
 	'use strict';
    var left;
 	/*--check--*/
-	if (dir === "left") 
+	if (dir === "left")
 		left = 0;
 	else if (dir === "right")
 		left = sld * 2;
@@ -53,11 +53,11 @@ function moveImage() {
       first_Li.style.marginLeft = left + 'px'; 
       if (left === sld)  {
          clearInterval(int);
-		   if (a = 0) 
-		      instantPlay();
+		   if (a === 0) 
+		      setTimeout(function () {instantPlay()}, 1200);
 		}
    }
-   int = setInterval(frame, 3)
+   int = setInterval(frame, 3);
 }
 /*-----------------find QUERY variable-------------------*/
 function getQueryVariable(variable) {
@@ -65,7 +65,7 @@ function getQueryVariable(variable) {
    var vars = query.split("&");
    for (var i=0;i<vars.length;i++) {
       var pair = vars[i].split("=");
-      if(pair[0] == variable){return pair[1];}
+      if(pair[0] === variable){return pair[1];}
    }
    return(false);
 }
@@ -73,8 +73,7 @@ function getQueryVariable(variable) {
 function moveSlider(direction) {
 	'use strict';
 	if (a === 0) {
-	   clearInterval(int1); 
-		clearInterval(int2); 
+	     
 	}
    if (direction === "left") {
       move_image = sld * 2;
@@ -102,12 +101,13 @@ function moveSlider(direction) {
 		dir = "left";
 		moveImage();
 		last_Li = document.getElementsByClassName('li-image')[li_count - 1];
-		 
+		left.addEventListener("click", eventLlistLeft);
       break;
    case "right":
 		newLi = last_Li.cloneNode(true);
 		last_Li.remove();
       rightInsert();
+		right.addEventListener("click", eventLlistRight);
       break;
    }
 }
@@ -118,22 +118,32 @@ var nextTime;
 var auto_direction;
 var a = 0;
 
-//function autoPlay () {
-//	int1 = setInterval(moveSlider(auto_direction), nextTime * 1000);
-//}
-
 function instantPlay () {
 	if (a !== 1) {
 		nextTime = getQueryVariable("nextTime");
    	auto_direction = getQueryVariable("direction");
 		if  (nextTime !== "" & auto_direction !== "") {
-			int2 = setInterval(moveSlider(auto_direction), nextTime * 1000);
+			int1 = setInterval(function () {moveSlider(auto_direction)}, nextTime * 1000);
    		a = 1;
 		}
 	}
 }
 
-left.addEventListener("click", moveSlider.bind(this, "left"), a = 0);
-right.addEventListener("click", moveSlider.bind(this, "right"));
+function eventLlistLeft () {
+	a = 0;
+	clearInterval(int1);
+	left.removeEventListener("click", eventLlistLeft);
+	moveSlider.call(this, "left");
+}
 
-instantPlay();
+function eventLlistRight () {
+	a = 0;
+	clearInterval(int1);
+	right.removeEventListener("click", eventLlistRight);
+	moveSlider.call(this, "right");
+}
+
+left.addEventListener("click", eventLlistLeft);
+right.addEventListener("click", eventLlistRight);
+
+setTimeout(function () {instantPlay()}, 3000);
